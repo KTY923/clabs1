@@ -1,20 +1,22 @@
 #include<stdio.h>
-char func(char n)
-{
-    char count=0;
-    while(n>0)
-    {
-        count++;
-        n&=(n-1);
+#include<stdlib.h>
+int num1(int n){
+    int count = 0;
+    while(n){
+        ++count;
+        n = (n - 1) & n;
     }
     return count;
 }
-int main(void)
+
+int main(int argc, char const *argv[])
 {
-    printf("n");
-    char n;
-    n=getchar();
-    char num=func(n);
-    printf("the number of one is %d\n",num);
-    putchar(num);
+    char s;
+    int num = 0;
+    while((s = getchar()) != '\n'){
+        num = num * 10 + s - '0';
+    }
+    printf("%d\n",num1(num));
+    system("pause");
+    return 0;
 }
