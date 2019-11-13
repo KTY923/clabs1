@@ -12,10 +12,10 @@ int main (void)
     
     do {
         x = x/2;
-        n++
+        n++;
     }
     while (x>0);
-    printf ("The unsigned int bit is %d\n",n)
-    return 0
+    printf ("The unsigned int bit is %d\n",n);
+    return 0;
 }
     
