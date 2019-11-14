@@ -1,22 +1,27 @@
 #include<stdio.h>
-#include<stdlib.h>
-int num1(int n){
-    int count = 0;
-    while(n){
-        ++count;
-        n = (n - 1) & n;
-    }
-    return count;
-}
-
-int main(int argc, char const *argv[])
-{
-    char s;
-    int num = 0;
-    while((s = getchar()) != '\n'){
-        num = num * 10 + s - '0';
-    }
-    printf("%d\n",num1(num));
-    system("pause");
+main()
+{	int i,num=0;
+	int count=0;
+	char s[100]={0};
+	
+	printf("take a number<99999\n");
+	gets(s);
+	for(i=0;s[i]!='\0';i++)	
+			num=num*10+(s[i]-'0');
+	
+	while(strlen(s)>5)          
+ 
+	{	
+		num=0;
+		printf("take a number again:\n"); 
+		gets(s);							
+		for(i=0;s[i]!='\0';i++)	
+			num=num*10+(s[i]-'0');
+	}
+	
+	for(i=0;i<17;i++)					
+		if(num&(1<<i))						
+			count++;
+	printf("%d\n",count);
     return 0;
 }
