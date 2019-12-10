@@ -1,6 +1,3 @@
-
-#include<stdio.h>
-
 #include<stdio.h>
 void reverse(char s[])
 {	if(s[0]!='\0')
