@@ -26,11 +26,14 @@ main()
     int type;
     double op2;
     char var[MAXVAL];
+	int sign=1;
 
     while ((type = getop(val)) != EOF)
 	{
         switch (type)
-		{
+		{	
+			//case '':
+				
 			case NUMBER:
 				push(atof(val));
 				break;
@@ -43,6 +46,11 @@ main()
 			case '-':
 				op2 = pop();
 				push(pop() - op2);
+				break;
+			case '$':
+				op2 = pop();
+				push(pop() - op2);
+				printf("\t%.8g\n", pop());
 				break;
 			case '/':
 				op2 = pop();
@@ -156,11 +164,33 @@ void ungetch(int c)
 
 int getop(char s[])
 {	int i,c;
+	int sign=1;
 	while ((s[0]=c=getch())==' '||c=='\t')
 		;
 	s[1]='\0';
+	if(c=='-')
+	{	i=0;
+		if(isdigit(c=getch()))
+		{	s[++i]=c;	
+			while(isdigit(s[++i]=c=getch()))
+			;
+			s[i]='\0';
+			if(c!= EOF)
+				ungetch;
+			return NUMBER;
+		}
+		else
+			if(c==' ')
+				return '-';
+			else
+				return '$';
+
+	
+	}
 	if(!isdigit(c)&&c!='.')
+	{	//if
 		return c;
+	}
 	i=0;
 	if(isdigit(c))
 		while(isdigit(s[++i]=c=getch()))
